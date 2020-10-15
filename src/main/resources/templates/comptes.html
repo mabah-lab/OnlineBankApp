@@ -7,13 +7,124 @@
 <title>Ma Banque</title>
 </head>
 <body>
-	<div layout:fragment="content">
-		 <h2>Bonjour</h2>
-		 <p>ceci est un test</p>
-		 <p>ceci est un test</p>
-		 <p>ceci est un test</p>
-		 <p>ceci est un test</p>
-	</div>
+<div layout:fragment="content">
+  <div class="container">
+  <br/>
+	<div class="row">
+			<div class="col-md-6 ">
+				
+				
+					  <div class="card ">
+						    <div class="card-header bg-info ">Consultation du compte</div>
+						    <div class="card-body">
+						    	<form th:action="@{/consulterCompte}" method="get">
+						    		<div>
+						    			<label>Code Compte:</label>
+						    			<input type="text" name="numCompte" th:value="${numCompte}"/>
+						    			<button type="submit" class="btn-info">Envoyer</button>
+						    		</div>
+						    	</form>
+						    	<div class="text-danger" th:if="${exception}" th:text="${exception.message}">
+						    	
+						    	</div>
+						    
+						    </div> 
+					  </div>
+						<br/>
+				
+					  <div class="card " th:if="${compte}">
+						    <div class="card-header bg-info ">Détail du compte</div>
+						    <div class="card-body">
+						    	<div>
+							    	<label class="font-weight-bold">Client:</label>
+							    	<label th:text="${compte.client.prenom}" class="font-weight-bold"></label>
+						    	</div>
+						    	<div>
+							    	<label>Numéro de compte:</label>
+							    	<label th:text="${compte.numCompte}"></label>
+						    	</div>
+						    	<div>
+							    	<label>Solde:</label>
+							    	<label th:text="${compte.solde}"></label>
+						    	</div>
+						    	<div>
+							    	<label>Date de création:</label>
+							    	<label th:text="${compte.dateCreation}"></label>
+						    	</div>
+						    	<div>
+							    	<label>Type:</label>
+							    	<label th:text="${compte.class.simpleName}"></label>
+						    	</div>
+						    	<div th:if="${compte.class.simpleName=='CompteCourant'}">
+							    	<label>Decouvert:</label>
+							    	<label th:text="${compte.decouvert}"></label>
+						    	</div>
+						    	<div th:if="${compte.class.simpleName=='CompteEpargne'}">
+							    	<label>Taux:</label>
+							    	<label th:text="${compte.taux}"></label>
+						    	</div>
+						    </div> 
+					  </div>
+				
+				
+			</div>
+			<div class="col-md-6 ">
+				
+				
+					  <div class="card " th:if="${compte}">
+						    <div class="card-header bg-info ">Opérations sur compte</div>
+						    <div class="card-body">
+						    	<form th:action="@{/saveOperation}" method="post">
+						    		<div>
+						    			<input type="hidden" name="numCompte" th:value="${numCompte}"/>
+						    			Compte <label th:text="${numCompte}"></label>
+						    		</div>
+						    		<div>
+						    			<input type="radio" name="typeOperation" value="V" checked="checked" onChange="getElementById('fVir').style.display='none'" />
+						    			<label>Versement</label>
+						    			<input type="radio" name="typeOperation" value="R" onChange="getElementById('fVir').style.display='none'"/>
+						    			<label>Retrait</label>
+						    			<input type="radio" name="typeOperation" value="VIR" onChange="getElementById('fVir').style.display='block'"/>
+						    			<label>Virement</label>
+						    		</div>
+						    		<div class="form-group" id="fVir" style="display:none">
+						    			<label>Vers</label>
+						    			<input type="text" name="numCompte2" class="form-control" />
+						    		</div>
+						    		<div class="form-group">
+						    			<label>Montant</label>
+						    			<input type="text" name="montant" class="form-control" />
+						    		</div>
+						    		<div class="text-danger" th:text="${#httpServletRequest.getParameter('error')}">
+						    		</div>
+						    		<button type="submit" class="btn btn-info" >Envoyer</button>
+						    	</form>
+						    </div> 
+					  </div>
+				      <br/>
+				
+					  <div class="card " th:if="${compte}">
+						    <div class="card-header bg-info ">Liste des opérations</div>
+						    <div class="card-body">
+						    	<table class="table table-striped table-secondary">
+						    	  <thead class="">
+						    		<tr>
+						    			<th>N°</th><th>Type</th><th>Date</th><th>Montant</th>
+						    		</tr>
+						    	 </thead>	
+						    		<tr th:each="o:${listOperations}">
+						    			<td th:text="${o.numOperation}"></td><td th:text="${o.class.simpleName}"></td><td th:text="${o.dateOperation}"></td><td th:text="${o.montant}"></td>
+						    		</tr>
+						    	</table>
+						    </div> 
+					  </div>
+				
+				
+			</div>
+	</div>	
+  </div>
+  <br/>
+</div>
 
 </body>
 </html>

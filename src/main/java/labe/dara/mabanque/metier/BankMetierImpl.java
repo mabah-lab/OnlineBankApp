@@ -62,6 +62,8 @@ public class BankMetierImpl implements IBankMetier {
 	@Override
 	public void virer(String codeCompte1,String codeCompte2, double montant) {
 		// TODO Auto-generated method stub
+		if(codeCompte1.equals(codeCompte2))
+			throw new RuntimeException("Virement sur le même compte non autorisé");
 		retirer(codeCompte1, montant);
 		verser(codeCompte2, montant);	
 	}
