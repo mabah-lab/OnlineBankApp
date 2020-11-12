@@ -116,6 +116,16 @@
 						    			<td th:text="${o.numOperation}"></td><td th:text="${o.class.simpleName}"></td><td th:text="${o.dateOperation}"></td><td th:text="${o.montant}"></td>
 						    		</tr>
 						    	</table>
+						    	
+						    	<div class="container">
+						    		<ul class="nav nav-pills">
+						    			<li class="nav-items" th:each="p,status:${pages}">
+						    				<a th:class="${pageCourante==status.index?'nav-link active':'nav-link'}" th:href="@{/consulterCompte(numCompte=${numCompte},page=${status.index})}" th:text="${status.index}"></a>
+						    			</li>
+						    		</ul>	
+						    	</div>
+						    	
+						    	
 						    </div> 
 					  </div>
 				
