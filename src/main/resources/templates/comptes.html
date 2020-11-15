@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       layout:decorator="maTemplate">
 <head>
 <meta charset="UTF-8">
@@ -9,11 +10,10 @@
 <body>
 <div layout:fragment="content">
   <div class="container">
-  <br/>
-	<div class="row">
+
+	<div class="row p-md-4">
 			<div class="col-md-6 ">
-				
-				
+
 					  <div class="card ">
 						    <div class="card-header bg-info ">Consultation du compte</div>
 						    <div class="card-body">
@@ -25,13 +25,11 @@
 						    		</div>
 						    	</form>
 						    	<div class="text-danger" th:if="${exception}" th:text="${exception.message}">
-						    	
 						    	</div>
-						    
-						    </div> 
+						    </div>
+						    <div class="card-footer"> </div>
 					  </div>
-						<br/>
-				
+					  <br/>
 					  <div class="card " th:if="${compte}">
 						    <div class="card-header bg-info ">Détail du compte</div>
 						    <div class="card-body">
@@ -63,14 +61,14 @@
 							    	<label>Taux:</label>
 							    	<label th:text="${compte.taux}"></label>
 						    	</div>
-						    </div> 
+						    </div>
+						    <div class="card-footer"> </div> 
 					  </div>
-				
-				
+	
 			</div>
-			<div class="col-md-6 ">
+			<div class="col-md-6 " >
 				
-				
+					  <div sec:authorize="hasRole('ROLE_ADMIN')">
 					  <div class="card " th:if="${compte}">
 						    <div class="card-header bg-info ">Opérations sur compte</div>
 						    <div class="card-body">
@@ -99,10 +97,10 @@
 						    		</div>
 						    		<button type="submit" class="btn btn-info" >Envoyer</button>
 						    	</form>
-						    </div> 
+						    </div>
+						    <div class="card-footer"> </div> 
 					  </div>
-				      <br/>
-				
+					  </div>
 					  <div class="card " th:if="${compte}">
 						    <div class="card-header bg-info ">Liste des opérations</div>
 						    <div class="card-body">
@@ -124,16 +122,15 @@
 						    			</li>
 						    		</ul>	
 						    	</div>
-						    	
-						    	
-						    </div> 
+						    </div>
+						    <div class="card-footer"> </div> 
 					  </div>
 				
 				
 			</div>
 	</div>	
   </div>
-  <br/>
+
 </div>
 
 </body>

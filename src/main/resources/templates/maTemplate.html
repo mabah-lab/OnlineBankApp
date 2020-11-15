@@ -18,6 +18,19 @@
 				<li class="nav-item"><a class="nav-link" th:href="@{/comptes}">Comptes</a></li>
 				<li class="nav-item"><a class="nav-link" th:href="@{/clients}">Clients</a></li>
 			</ul>
+			<ul class="navbar-nav ml-auto">
+			
+				<!-- Dropdown -->
+			    <li class="nav-item dropdown">
+			      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" th:inline="text">
+			        [[${#httpServletRequest.remoteUser}]]
+			      </a>
+			      <div class="dropdown-menu">
+			        <a class="dropdown-item" href="#">Profil</a>
+			        <a class="dropdown-item"  th:href="@{/login?logout}">Logout</a>
+			      </div>
+			    </li>
+			</ul>
 		</nav>
 				
 	
@@ -25,7 +38,7 @@
 	<section layout:fragment="content"></section>
 	<footer class="navbar-fixed-bottom">
 	<div class="container-fluid bg-dark text-white text-center">
-	<small>By bahol Banque drois reservés </small>
+	<small>By bahol Banque droits reservés </small>
 	</div>
 	</footer>
 </body>

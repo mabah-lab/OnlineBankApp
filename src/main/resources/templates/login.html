@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Page d'authentification</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<div class="container col-md-3 p-md-3" >
+	<div class="card ">
+	  <div class="card-header text-center bg-info">Authentification</div>
+	  <div class="card-body">
+	  		<div th:if="${param.error}" class="text-danger">
+	  			Utilisateur ou mot de passe incorrect
+	  		</div>
+	  		<div th:if="${param.logout}" class="text-danger">
+	  			Vous êtes deconnectés
+	  		</div>
+	  		<form th:action="@{/login}" method="post">
+			  <div class="form-group">
+			    <label for="username">Login:</label>
+			    <input type="text" class="form-control" placeholder="Enter Votre login"  name="username" >
+			  </div>
+			  <div class="form-group">
+			    <label for="password">Password:</label>
+			    <input type="password" class="form-control" placeholder="Enter password" name="password" >
+			  </div>
+			   <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+	  
+	  </div>
+	  <div class="card-footer bg-info"></div>
+	</div>
+</div>		
+	
+	
+
 
 </body>
 </html>
