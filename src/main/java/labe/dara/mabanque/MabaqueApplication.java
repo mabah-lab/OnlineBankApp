@@ -33,8 +33,8 @@ public class MabaqueApplication  implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		iBankInitialize.initUsersProfils();
-		iBankInitialize.initBankData();
+		/*iBankInitialize.initUsersProfils();
+		iBankInitialize.initBankData();*/
 
 
 	}
