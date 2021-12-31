@@ -3,9 +3,9 @@ spring:
     init:
       platform: postgresql
   datasource:
-    url: jdbc:postgresql://localhost:5432/ONLINE_BANK
-    username: root
-    password: root
+    url: jdbc:postgresql://ec2-34-253-116-145.eu-west-1.compute.amazonaws.com:5432/d3atqab1d7b6il
+    username: kntjrtswcibime
+    password: bd9fb6736bce53a15448bc2f3017335a0935176ae0bde64b0ef4b68f6a01149e
   jpa:
     hibernate:
       ddl-auto: create
