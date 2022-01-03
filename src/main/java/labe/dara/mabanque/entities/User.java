@@ -15,7 +15,7 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name = "users")
+@Table(name = "bk_users")
 public class User implements Serializable {
 
     @Id

@@ -8,8 +8,9 @@ spring:
     password: bd9fb6736bce53a15448bc2f3017335a0935176ae0bde64b0ef4b68f6a01149e
   jpa:
     hibernate:
+#      default_schema: public
       ddl-auto: create
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
   mvc:
     throw-exception-if-no-handler-found: true
   web:

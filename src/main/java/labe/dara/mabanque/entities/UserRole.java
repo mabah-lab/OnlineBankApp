@@ -18,9 +18,9 @@ public class UserRole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "username",foreignKey=@ForeignKey(name = "USER_ROLE_FK"))
     private User user;
     @ManyToOne
-    @JoinColumn(name = "role")
+    @JoinColumn(name = "role",foreignKey=@ForeignKey(name = "ROLE_USER_FK"))
     private Role role;
 }

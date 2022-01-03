@@ -25,7 +25,7 @@ public class SecurConfig extends WebSecurityConfigurerAdapter{
 		 * .withUser("user").password("{noop}bah").roles("USER");
 		 */
 		auth.jdbcAuthentication().dataSource(dataSource)
-		.usersByUsernameQuery("select username as principal, password as credentials,active from users where username=?")
+		.usersByUsernameQuery("select username as principal, password as credentials,active from bk_users where username=?")
 		.authoritiesByUsernameQuery("select username as principal, role from users_roles where username=?")
 		.passwordEncoder(new BCryptPasswordEncoder()).rolePrefix("ROLE_");
 		

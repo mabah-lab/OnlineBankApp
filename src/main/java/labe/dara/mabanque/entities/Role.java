@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor @AllArgsConstructor @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name = "roles")
+@Table(name = "role")
 public class Role implements Serializable {
     @Id
     @Column(length = 20)
