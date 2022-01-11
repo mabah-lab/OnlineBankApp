@@ -3,9 +3,9 @@ spring:
     init:
       platform: postgresql
   datasource:
-    url: jdbc:postgresql://ec2-34-253-116-145.eu-west-1.compute.amazonaws.com:5432/d3atqab1d7b6il
-    username: kntjrtswcibime
-    password: bd9fb6736bce53a15448bc2f3017335a0935176ae0bde64b0ef4b68f6a01149e
+    url: jdbc:postgresql://ec2-176-34-116-203.eu-west-1.compute.amazonaws.com:5432/d5chsipkltggme
+    username: qignwunpoyifwz
+    password: 67f8a13cfff9a97e08ecfecea8e3ddeee7ecfb7b25bdf0526bfac53b00f14da8
   jpa:
     hibernate:
 #      default_schema: public
